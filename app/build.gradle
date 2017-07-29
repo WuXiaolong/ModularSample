@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'android-apt'
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "com.wuxiaolong.modularsample"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //所有资源必须以此 prefix 开头，否则会报错
+        resourcePrefix "app_"
+        //arouter
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+
+    //arouter
+    annotationProcessor rootProject.ext.arouterAnnotationProcessor
+
+    if (isDebug.toBoolean()) {
+        //当isDebug true，app得依赖基础库，保证app不报错
+        compile project(':router')
+    } else {
+        compile project(':module1')
+        compile project(':module2')
+    }
+
+}

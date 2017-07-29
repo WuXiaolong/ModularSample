@@ -1,0 +1,54 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        jcenter()
+        //butterknife
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+//        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        //butterknife
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.7.0'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+def androidSupportVersion = '25.3.1'
+def butterknifeVersion = '8.7.0'
+
+ext {
+    //编译的 SDK 版本，如API20
+    compileSdkVersion = 25
+    //构建工具的版本，其中包括了打包工具aapt、dx等,如API20对应的build-tool的版本就是20.0.0
+    buildToolsVersion = "26.0.0"
+    //兼容的最低 SDK 版本
+    minSdkVersion = 14
+    //向前兼容，保存新旧两种逻辑，并通过 if-else 方法来判断执行哪种逻辑
+    targetSdkVersion = 22
+    appcompatV7 = "com.android.support:appcompat-v7:$androidSupportVersion"
+    constraintLayout = 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    //arouter
+    arouterApi= 'com.alibaba:arouter-api:1.2.1.1'
+    arouterAnnotationProcessor = 'com.alibaba:arouter-compiler:1.0.3'
+
+    //dagger2
+    dagger2= 'com.google.dagger:dagger:2.11'
+    dagger2AnnotationProcessor='com.google.dagger:dagger-compiler:2.11'
+
+    //butterknife
+    butterknife="com.jakewharton:butterknife:$butterknifeVersion"
+    butterknifeAnnotationProcessor="com.jakewharton:butterknife-compiler:$butterknifeVersion"
+}
