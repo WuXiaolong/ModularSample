@@ -1,4 +1,4 @@
-package com.wuxiaolong.common;
+package com.wuxiaolong.common.activity;
 
 import android.support.annotation.LayoutRes;
 

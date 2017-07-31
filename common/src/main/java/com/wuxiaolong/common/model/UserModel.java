@@ -7,7 +7,7 @@ import java.io.Serializable;
  * 个人博客：http：//wuxiaolong.me
  */
 
-public class UserInfo implements Serializable{
+public class UserModel implements Serializable{
     private String name;
     private String message;
 

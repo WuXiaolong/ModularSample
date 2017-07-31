@@ -3,9 +3,8 @@
     package="com.wuxiaolong.module1">
 
     <application
-        android:name=".Module1Application"
         android:allowBackup="true"
-        android:label="@string/module1_app_name"
+        android:label="@string/module1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">

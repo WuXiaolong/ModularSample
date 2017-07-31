@@ -7,8 +7,6 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
 //        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         //butterknife
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.7.0'
@@ -42,7 +40,7 @@ ext {
 
     //arouter
     arouterApi= 'com.alibaba:arouter-api:1.2.1.1'
-    arouterAnnotationProcessor = 'com.alibaba:arouter-compiler:1.0.3'
+    arouterAnnotationProcessor = 'com.alibaba:arouter-compiler:1.1.2.1'
 
     //dagger2
     dagger2= 'com.google.dagger:dagger:2.11'

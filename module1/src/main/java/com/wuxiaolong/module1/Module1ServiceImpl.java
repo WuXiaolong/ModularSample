@@ -16,7 +16,7 @@ public class Module1ServiceImpl implements Module1Service {
     @Override
     public boolean share() {
         Log.d("wxl","share");
-        return false;
+        return true;
     }
 
     @Override

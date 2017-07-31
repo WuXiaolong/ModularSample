@@ -1,39 +1,63 @@
 package com.wuxiaolong.module2;
 
 import android.os.Bundle;
-import android.view.View;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.wuxiaolong.common.ButterKnifeActivity;
+import com.wuxiaolong.common.activity.ButterKnifeActivity;
+import com.wuxiaolong.common.model.WeatherModel;
+import com.wuxiaolong.common.retrofit.ApiCallback;
 import com.wuxiaolong.router.RouterConstants;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 @Route(path = RouterConstants.MODULE2_MAIN_ACTIVITY)
 public class MainActivity extends ButterKnifeActivity {
 
+
+    @BindView(R2.id.module2_textview)
+    TextView module2Textview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.module2_activity_main);
         ButterKnife.bind(this);
-        findViewById(R.id.module2_button1).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toastShow("ddd");
-                ARouter.getInstance().build(RouterConstants.MODULE1_MAIN_ACTIVITY).navigation();
-            }
-        });
+        initToolBar(getString(R.string.module2));
     }
 
-//    @OnClick({R2.id.module2_button2, R2.id.module2_button1})
-//    public void onViewClicked(View view) {
-//        int i = view.getId();
-//        if (i == R.id.module2_button1) {
-//            ARouter.getInstance().build(RouterConstants.MODULE1_MAIN_ACTIVITY).navigation();
-//        } else if (i == R.id.module2_button2) {
-//        }
-//    }
+    //全国+国外主要城市代码http://mobile.weather.com.cn/js/citylist.xml
+    private void loadWeatherData() {
+        showProgressDialog();
+        addSubscription(apiStores().loadWeatherData("101220602"),
+                new ApiCallback<WeatherModel>() {
+                    @Override
+                    public void onSuccess(WeatherModel model) {
+                        WeatherModel.WeatherinfoBean weatherinfo = model.getWeatherinfo();
+                        String showData = getResources().getString(R.string.city) + weatherinfo.getCity()
+                                + getResources().getString(R.string.wd) + weatherinfo.getWD()
+                                + getResources().getString(R.string.ws) + weatherinfo.getWS()
+                                + getResources().getString(R.string.time) + weatherinfo.getTime();
+                        module2Textview.setText(showData);
+                    }
+
+                    @Override
+                    public void onFailure(String msg) {
+                        toastShow(msg);
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        dismissProgressDialog();
+                    }
+                });
+    }
+
+    @OnClick(R2.id.module2_button)
+    public void onViewClicked() {
+        loadWeatherData();
+    }
 }

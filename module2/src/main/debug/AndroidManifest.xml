@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wuxiaolong.module2">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:name=".Module2Application"
         android:allowBackup="true"
-        android:label="@string/module2_app_name"
+        android:label="@string/module2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">

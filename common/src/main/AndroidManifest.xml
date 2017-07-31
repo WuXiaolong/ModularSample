@@ -5,7 +5,7 @@
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
-        <activity android:name=".ButterKnifeActivity"></activity>
+        <activity android:name=".activity.ButterKnifeActivity"></activity>
     </application>
 
 </manifest>

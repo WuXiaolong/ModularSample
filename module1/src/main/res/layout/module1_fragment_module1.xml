@@ -4,10 +4,9 @@
     android:layout_height="match_parent"
     tools:context="com.wuxiaolong.module1.Module1Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="" />
+        android:text="@string/from_module1fragment" />
 
 </FrameLayout>

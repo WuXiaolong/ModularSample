@@ -6,7 +6,7 @@ if (isDebug.toBoolean()) {
 
 //butterknife
 apply plugin: 'com.jakewharton.butterknife'
-//apply plugin: 'android-apt'
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -52,17 +52,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:support-v4:25.3.1'
-    testCompile 'junit:junit:4.12'
-
-//    if (isDebug.toBoolean()) {
-//        compile project(':module2')
-//    }
 
     //arouter
     annotationProcessor rootProject.ext.arouterAnnotationProcessor
@@ -70,7 +59,7 @@ dependencies {
     compile project(':router')
 
     //dagger2
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+    annotationProcessor rootProject.ext.dagger2AnnotationProcessor
 
     //butterknife
     annotationProcessor rootProject.ext.butterknifeAnnotationProcessor
