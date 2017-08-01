@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         // 作为library时不能有applicationId,只有作为一个独立应用时才能够如下设置
-        if (isDebug.toBoolean()){
+        if (isDebug.toBoolean()) {
             applicationId "com.wuxiaolong.module1"
         }
         minSdkVersion rootProject.ext.minSdkVersion
@@ -25,7 +25,7 @@ android {
         //arouter
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [moduleName: project.getName()]
             }
         }
     }
@@ -44,6 +44,7 @@ android {
                 java {
                     //release 时 debug 目录下文件不需要合并到主工程
                     exclude 'debug/**'
+                    exclude '**/debug/**'
                 }
             }
         }
@@ -54,14 +55,14 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
     //arouter
-    annotationProcessor rootProject.ext.arouterAnnotationProcessor
+    annotationProcessor rootProject.ext.arouterCompiler
 
-    compile project(':router')
+    compile project(':common')
 
     //dagger2
-    annotationProcessor rootProject.ext.dagger2AnnotationProcessor
+    annotationProcessor rootProject.ext.dagger2Compiler
 
     //butterknife
-    annotationProcessor rootProject.ext.butterknifeAnnotationProcessor
+    annotationProcessor rootProject.ext.butterknifeCompiler
 
 }

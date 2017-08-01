@@ -1,4 +1,4 @@
-package com.wuxiaolong.router;
+package com.wuxiaolong.common.router;
 
 import com.alibaba.android.arouter.facade.template.IProvider;
 

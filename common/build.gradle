@@ -29,11 +29,11 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
+    //testCompile 'junit:junit:4.12'
     compile rootProject.ext.appcompatV7
     compile rootProject.ext.constraintLayout
     //compile 'com.wuxiaolong.androidutils:androidutils:1.0.6'
-    //compile(name:'AndroidUtils1.0.7', ext:'aar')
+//    compile(name:'AndroidUtils1.0.7', ext:'aar')
 
     //butterknife
     compile rootProject.ext.butterknife
@@ -54,4 +54,8 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'io.reactivex:rxjava:1.1.0'
 
+    //arouter
+    compile rootProject.ext.arouterApi
+//    compile rootProject.ext.arouterCompiler
+    compile rootProject.ext.alibabaFastjson
 }

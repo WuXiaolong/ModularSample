@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'android-apt'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -9,7 +8,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "0.01"
         //所有资源必须以此 prefix 开头，否则会报错
         resourcePrefix "app_"
         //arouter
@@ -31,17 +30,17 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
     //arouter
-    annotationProcessor rootProject.ext.arouterAnnotationProcessor
+    annotationProcessor rootProject.ext.arouterCompiler
 
     //butterknife
-    annotationProcessor rootProject.ext.butterknifeAnnotationProcessor
+    annotationProcessor rootProject.ext.butterknifeCompiler
 
     //dagger2
-    annotationProcessor rootProject.ext.dagger2AnnotationProcessor
+    annotationProcessor rootProject.ext.dagger2Compiler
 
     if (isDebug.toBoolean()) {
         //当isDebug true，app得依赖基础库，保证app不报错
-        compile project(':router')
+        compile project(':common')
     } else {
         compile project(':module1')
         compile project(':module2')

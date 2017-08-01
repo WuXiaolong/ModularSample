@@ -39,14 +39,15 @@ ext {
     constraintLayout = 'com.android.support.constraint:constraint-layout:1.0.2'
 
     //arouter
-    arouterApi= 'com.alibaba:arouter-api:1.2.1.1'
-    arouterAnnotationProcessor = 'com.alibaba:arouter-compiler:1.1.2.1'
+    arouterApi = 'com.alibaba:arouter-api:1.2.1.1'
+    arouterCompiler = 'com.alibaba:arouter-compiler:1.1.2.1'
+    alibabaFastjson = 'com.alibaba:fastjson:1.2.9'
 
     //dagger2
-    dagger2= 'com.google.dagger:dagger:2.11'
-    dagger2AnnotationProcessor='com.google.dagger:dagger-compiler:2.11'
+    dagger2 = 'com.google.dagger:dagger:2.11'
+    dagger2Compiler = 'com.google.dagger:dagger-compiler:2.11'
 
     //butterknife
-    butterknife="com.jakewharton:butterknife:$butterknifeVersion"
-    butterknifeAnnotationProcessor="com.jakewharton:butterknife-compiler:$butterknifeVersion"
+    butterknife = "com.jakewharton:butterknife:$butterknifeVersion"
+    butterknifeCompiler = "com.jakewharton:butterknife-compiler:$butterknifeVersion"
 }

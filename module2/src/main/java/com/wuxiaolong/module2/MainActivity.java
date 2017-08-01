@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wuxiaolong.common.activity.ButterKnifeActivity;
 import com.wuxiaolong.common.model.WeatherModel;
 import com.wuxiaolong.common.retrofit.ApiCallback;
-import com.wuxiaolong.router.RouterConstants;
+import com.wuxiaolong.common.router.RouterConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

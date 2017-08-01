@@ -26,4 +26,5 @@ public class UserModel implements Serializable{
     public void setMessage(String message) {
         this.message = message;
     }
+
 }

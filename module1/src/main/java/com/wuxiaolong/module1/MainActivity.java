@@ -2,16 +2,23 @@ package com.wuxiaolong.module1;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.wuxiaolong.common.activity.ButterKnifeActivity;
-import com.wuxiaolong.router.RouterConstants;
+import com.wuxiaolong.common.activity.BaseActivity;
+import com.wuxiaolong.common.model.UserModel;
+import com.wuxiaolong.common.router.RouterConstants;
+import com.wuxiaolong.common.router.RouterUtils;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 @Route(path = RouterConstants.MODULE1_MAIN_ACTIVITY)
-public class MainActivity extends ButterKnifeActivity {
+public class MainActivity extends BaseActivity {
+
+
+    @BindView(R2.id.module1_text)
+    TextView module1Text;
 
 
     @Override
@@ -19,6 +26,12 @@ public class MainActivity extends ButterKnifeActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.module1_activity_main);
         initToolBar(getString(R.string.module1));
+
+        if (this.getIntent() != null) {
+            UserModel userModel = (UserModel) this.getIntent().getSerializableExtra("obj");
+            if (userModel != null)
+                module1Text.setText(userModel.getName() + "，" + userModel.getMessage());
+        }
     }
 
     /**
@@ -29,7 +42,7 @@ public class MainActivity extends ButterKnifeActivity {
     public void onViewClicked(View view) {
         int id = view.getId();
         if (id == R.id.module1_button) {
-            ARouter.getInstance().build(RouterConstants.MODULE2_MAIN_ACTIVITY).navigation();
+            RouterUtils.navigation(RouterConstants.MODULE2_MAIN_ACTIVITY);
         }
     }
 }

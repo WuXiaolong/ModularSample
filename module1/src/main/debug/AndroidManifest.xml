@@ -3,6 +3,7 @@
     package="com.wuxiaolong.module1">
 
     <application
+        android:name=".debug.Module1Application"
         android:allowBackup="true"
         android:label="@string/module1"
         android:supportsRtl="true"

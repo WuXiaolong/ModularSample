@@ -55,15 +55,15 @@ dependencies {
 
 
     //arouter
-    annotationProcessor rootProject.ext.arouterAnnotationProcessor
+    annotationProcessor rootProject.ext.arouterCompiler
 
-    compile project(':router')
+    compile project(':common')
 
     //dagger2
-    annotationProcessor rootProject.ext.dagger2AnnotationProcessor
+    annotationProcessor rootProject.ext.dagger2Compiler
 
     //butterknife
-    annotationProcessor rootProject.ext.butterknifeAnnotationProcessor
+    annotationProcessor rootProject.ext.butterknifeCompiler
 
 
 

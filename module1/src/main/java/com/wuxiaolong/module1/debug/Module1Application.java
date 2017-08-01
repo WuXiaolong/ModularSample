@@ -1,14 +1,16 @@
-package com.wuxiaolong.modularsample;
+package com.wuxiaolong.module1.debug;
 
 import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.wuxiaolong.module1.BuildConfig;
 
 /**
- * Created by WuXiaolong on 2017/7/24.
+ * Created by WuXiaolong on 2017/8/1.
  * 个人博客：http：//wuxiaolong.me
  */
-public class AndroidApplication extends Application {
+
+public class Module1Application extends Application {
     @Override
     public void onCreate() {
         super.onCreate();

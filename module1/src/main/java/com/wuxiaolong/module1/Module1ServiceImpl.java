@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.wuxiaolong.router.Module1Service;
-import com.wuxiaolong.router.RouterConstants;
+import com.wuxiaolong.common.router.Module1Service;
+import com.wuxiaolong.common.router.RouterConstants;
 
 /**
  * Created by WuXiaolong on 2017/7/24.
