@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity {
         if (this.getIntent() != null) {
             UserModel userModel = (UserModel) this.getIntent().getSerializableExtra("obj");
             if (userModel != null)
-                module1Text.setText(userModel.getName() + "，" + userModel.getMessage());
+                module1Text.setText("带参数："+userModel.getName() + "，" + userModel.getMessage());
         }
     }
 

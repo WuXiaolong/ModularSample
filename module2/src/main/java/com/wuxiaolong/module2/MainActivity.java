@@ -31,7 +31,7 @@ public class MainActivity extends ButterKnifeActivity {
     //全国+国外主要城市代码http://mobile.weather.com.cn/js/citylist.xml
     private void loadWeatherData() {
         showProgressDialog();
-        addSubscription(apiStores().loadWeatherData("101220602"),
+        addSubscription(apiStores().loadWeatherData("101190201"),
                 new ApiCallback<WeatherModel>() {
                     @Override
                     public void onSuccess(WeatherModel model) {
