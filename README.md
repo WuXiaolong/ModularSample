@@ -1,11 +1,11 @@
-# ModularSample
-Modular Sample for Android
-
 # 效果预览
+//TODO
 
 # 详情介绍
+//TODO
 
-# 赞赏
-![](http://7q5c2h.com1.z0.glb.clouddn.com/wechatpay.JPG)
 # 微信公众号
 ![](http://open.weixin.qq.com/qr/code/?username=MrWuXiaolong)
+
+# 赞赏支持作者
+![](http://7q5c2h.com1.z0.glb.clouddn.com/wechatpay.JPG)
