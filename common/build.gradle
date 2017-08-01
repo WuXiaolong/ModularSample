@@ -56,6 +56,5 @@ dependencies {
 
     //arouter
     compile rootProject.ext.arouterApi
-//    compile rootProject.ext.arouterCompiler
-    compile rootProject.ext.alibabaFastjson
+    //compile rootProject.ext.alibabaFastjson
 }
