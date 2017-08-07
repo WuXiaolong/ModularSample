@@ -43,7 +43,6 @@ android {
                 manifest.srcFile 'src/main/release/AndroidManifest.xml'
                 java {
                     //release 时 debug 目录下文件不需要合并到主工程
-                    exclude 'AndroidManifest.xml'
                     exclude '**/debug/**'
                 }
             }

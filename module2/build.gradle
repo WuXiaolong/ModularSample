@@ -43,7 +43,7 @@ android {
             } else {
                 manifest.srcFile 'src/main/release/AndroidManifest.xml'
                 java {
-                    exclude 'debug/**'
+                    //exclude 'debug/**'
                 }
             }
         }
