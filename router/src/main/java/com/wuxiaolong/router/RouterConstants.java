@@ -1,4 +1,4 @@
-package com.wuxiaolong.common.router;
+package com.wuxiaolong.router;
 
 /**
  * Created by WuXiaolong on 2017/7/24.

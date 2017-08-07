@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.wuxiaolong.common.router.RouterConstants;
+import com.wuxiaolong.router.RouterConstants;
 
 
 @Route(path = RouterConstants.MODULE1_MODULE1_FRAGMENT)

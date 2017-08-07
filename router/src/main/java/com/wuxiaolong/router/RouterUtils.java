@@ -1,4 +1,4 @@
-package com.wuxiaolong.common.router;
+package com.wuxiaolong.router;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 

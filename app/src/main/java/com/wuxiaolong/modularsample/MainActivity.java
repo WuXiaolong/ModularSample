@@ -7,9 +7,9 @@ import android.view.View;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.wuxiaolong.common.activity.BaseActivity;
 import com.wuxiaolong.common.model.UserModel;
-import com.wuxiaolong.common.router.Module1Service;
-import com.wuxiaolong.common.router.RouterConstants;
-import com.wuxiaolong.common.router.RouterUtils;
+import com.wuxiaolong.router.Module1Service;
+import com.wuxiaolong.router.RouterConstants;
+import com.wuxiaolong.router.RouterUtils;
 
 import butterknife.OnClick;
 
