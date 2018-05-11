@@ -1,67 +1,17 @@
-if (isDebug.toBoolean()) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
-}
-
-//butterknife
 apply plugin: 'com.jakewharton.butterknife'
-
-android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-
-    defaultConfig {
-        // 作为library时不能有applicationId,只有作为一个独立应用时才能够如下设置
-        if (isDebug.toBoolean()) {
-            applicationId "com.wuxiaolong.module1"
-        }
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
-        //所有资源必须以此 prefix 开头，否则会报错
-        resourcePrefix "module1_"
-        //arouter
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
-            }
-        }
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    sourceSets {
-        main {
-            if (isDebug.toBoolean()) {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-            } else {
-                manifest.srcFile 'src/main/release/AndroidManifest.xml'
-                java {
-                    //release 时 debug 目录下文件不需要合并到主工程
-                    exclude '**/debug/**'
-                }
-            }
-        }
-    }
-}
+apply from: config
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
     //arouter
-    annotationProcessor rootProject.ext.arouterCompiler
+    annotationProcessor arouterCompiler
 
     compile project(':resource')
 
     //dagger2
-    annotationProcessor rootProject.ext.dagger2Compiler
+    annotationProcessor dagger2Compiler
 
     //butterknife
-    annotationProcessor rootProject.ext.butterknifeCompiler
-
+    annotationProcessor butterknifeCompiler
 }

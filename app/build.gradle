@@ -1,43 +1,16 @@
-apply plugin: 'com.android.application'
-
-android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-
-    defaultConfig {
-        applicationId "com.wuxiaolong.modularsample"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
-        versionName "0.02"
-        //所有资源必须以此 prefix 开头，否则会报错
-        resourcePrefix "app_"
-        //arouter
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
-            }
-        }
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
+apply from: config
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
     //arouter
-    annotationProcessor rootProject.ext.arouterCompiler
+    annotationProcessor arouterCompiler
 
     //butterknife
-    annotationProcessor rootProject.ext.butterknifeCompiler
+    annotationProcessor butterknifeCompiler
 
     //dagger2
-    annotationProcessor rootProject.ext.dagger2Compiler
+    annotationProcessor dagger2Compiler
 
     if (isDebug.toBoolean()) {
         //当isDebug true，app得依赖基础库，保证app不报错
@@ -46,5 +19,4 @@ dependencies {
         compile project(':module1')
         compile project(':module2')
     }
-
 }
