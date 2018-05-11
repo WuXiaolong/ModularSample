@@ -1,17 +1,12 @@
-apply plugin: 'com.jakewharton.butterknife'
 apply from: config
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':resource')
+    api project(':common')
 
-    //arouter
-    annotationProcessor arouterCompiler
+    kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
 
-    compile project(':resource')
-
-    //dagger2
-    annotationProcessor dagger2Compiler
-
-    //butterknife
-    annotationProcessor butterknifeCompiler
+    api "com.google.dagger:dagger:$dagger2_compiler_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger2_compiler_version"
 }

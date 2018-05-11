@@ -1,22 +1,20 @@
 apply from: config
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    api fileTree(include: ['*.jar'], dir: 'libs')
 
-    //arouter
-    annotationProcessor arouterCompiler
+    implementation project(":common")
 
-    //butterknife
-    annotationProcessor butterknifeCompiler
+    kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
 
-    //dagger2
-    annotationProcessor dagger2Compiler
+    api "com.google.dagger:dagger:$dagger2_compiler_version"
+    kapt  "com.google.dagger:dagger-compiler:$dagger2_compiler_version"
 
-    if (isDebug.toBoolean()) {
+    if (is_debug) {
         //当isDebug true，app得依赖基础库，保证app不报错
-        compile project(':resource')
+        api project(':resource')
     } else {
-        compile project(':module1')
-        compile project(':module2')
+        api project(':module1')
+        api project(':module2')
     }
 }

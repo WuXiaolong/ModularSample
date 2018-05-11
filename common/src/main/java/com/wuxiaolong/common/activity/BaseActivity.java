@@ -15,8 +15,6 @@ import com.wuxiaolong.common.R;
 import com.wuxiaolong.common.retrofit.ApiClient;
 import com.wuxiaolong.common.retrofit.ApiStores;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
@@ -26,7 +24,6 @@ import rx.subscriptions.CompositeSubscription;
 
 public class BaseActivity extends AppCompatActivity {
     public Context context;
-    private Unbinder unbinder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,15 +33,14 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
-        unbinder = ButterKnife.bind(this);
     }
 
     public Toolbar initToolBar(String title) {
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar =  findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            TextView toolbaTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+            TextView toolbaTitle =  toolbar.findViewById(R.id.toolbar_title);
             toolbaTitle.setText(title);
         }
         ActionBar actionBar = getSupportActionBar();
@@ -57,10 +53,10 @@ public class BaseActivity extends AppCompatActivity {
 
     public Toolbar initToolBarAsHome(String title) {
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            TextView toolbaTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+            TextView toolbaTitle =  toolbar.findViewById(R.id.toolbar_title);
             toolbaTitle.setText(title);
         }
         ActionBar actionBar = getSupportActionBar();
@@ -87,7 +83,6 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
         onUnsubscribe();
     }
     public ApiStores apiStores() {
