@@ -1,0 +1,30 @@
+ext{
+    androidSupportVersion = '25.3.1'
+    butterknifeVersion = '8.7.0'
+
+
+    compile_sdk_version = 25
+    build_tools_version = "26.0.0"
+
+    min_sdk_version = 14    //兼容的最低 SDK 版本
+    target_sdk_version = 22 //向前兼容，保存新旧两种逻辑，并通过 if-else 方法来判断执行哪种逻辑
+
+    version_code = 3
+    version_name = "0.03"
+
+    appcompatV7 = "com.android.support:appcompat-v7:$androidSupportVersion"
+    constraintLayout = 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    //arouter
+    arouterApi = 'com.alibaba:arouter-api:1.2.1.1'
+    arouterCompiler = 'com.alibaba:arouter-compiler:1.1.2.1'
+    alibabaFastjson = 'com.alibaba:fastjson:1.2.9'
+
+    //dagger2
+    dagger2 = 'com.google.dagger:dagger:2.11'
+    dagger2Compiler = 'com.google.dagger:dagger-compiler:2.11'
+
+    //butterknife
+    butterknife = "com.jakewharton:butterknife:$butterknifeVersion"
+    butterknifeCompiler = "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+}

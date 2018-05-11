@@ -1,0 +1,80 @@
+apply from: versions
+if (isIndependent()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+
+android {
+    compileSdkVersion compile_sdk_version
+    buildToolsVersion build_tools_version
+
+    defaultConfig {
+
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+
+        versionCode version_code
+        versionName version_name
+
+        resourcePrefix "${project.name}_"
+
+        if (isIndependent()) {
+            applicationId "com.wuxiaolong.${this.name}"
+            println("this == ${this.name} , applicationId")
+        }
+
+        //arouter
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
+        multiDexEnabled true
+    }
+
+
+
+
+    sourceSets {
+        main {
+            //未开启独立编译 并且是独立的module，才会使用总是使用 library/AndroidManifest.xml
+            if (!is_debug && this.name.startsWith("module")) {
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    //release 时 debug 目录下文件不需要合并到主工程
+                    exclude 'library/**'
+                }
+            }
+        }
+    }
+}
+
+/**
+ * 通过修改 project - build.gradle的 is_debug 值来控制module 是否可以独立编译
+ * @return true ：module 是 app ，is_debug = true 并且 module 命名为 `module_` 开头
+ */
+def isIndependent() {
+    //是app module ，独立编译
+    if (this.name.startsWith("app")) {
+        println("this module's name is not startsWith [module] , this.name = ${this.name}")
+        return true
+    }
+
+    //没有开启独立编译选项，所以为library
+    if (!is_debug) {
+        println("not independent!")
+        return false
+    }
+
+    //开启了独立编译选项，但是模块名称不是module_ 开头，所以为 library
+    if (!this.name.startsWith("module")) {
+        println("this module's name is not startsWith [module] , this.name = ${this.name}")
+        return false
+    }
+    println("this module is independent!")
+    return true
+}
