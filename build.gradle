@@ -8,20 +8,37 @@ buildscript {
         is_debug = isDebug.toBoolean()    //组件化每个模块是否可以独立编译
     }
 
+    apply from: versions
+
     repositories {
+        google()
         jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-        //butterknife
-        classpath 'com.jakewharton:butterknife-gradle-plugin:8.7.0'
+        classpath "com.android.tools.build:gradle:$gradle_build_tools_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 allprojects {
     repositories {
+        google()
+        mavenCentral()
         jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+subprojects { project ->
+    if (project.name.startsWith("module") || project.name.startsWith("app")) {
+        apply from: config
+
+        dependencies {
+            kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
+            kapt  "com.google.dagger:dagger-compiler:$dagger2_compiler_version"
+
+        }
     }
 }
 

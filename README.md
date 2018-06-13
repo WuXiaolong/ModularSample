@@ -15,6 +15,10 @@
 ![](http://7q5c2h.com1.z0.glb.clouddn.com/wechatpay.JPG)
 
 # 更新记录
+* v0.04 
+1. kotlin分支
+
+
 * v0.03
 1. 统一管理了build.gradle文件
 2. 现在只要是'module'开头的module,都可以使用同一份build.gradle,配置参见'rootDir/config.gradle'

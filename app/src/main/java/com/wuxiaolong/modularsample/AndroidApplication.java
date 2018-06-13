@@ -19,6 +19,5 @@ public class AndroidApplication extends Application {
             ARouter.printStackTrace(); // 打印日志的时候打印线程堆栈
         }
         ARouter.init(this); // 尽可能早，推荐在Application中初始化
-
     }
 }
