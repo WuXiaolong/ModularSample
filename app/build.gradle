@@ -4,17 +4,36 @@ dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
 
     implementation project(":common")
+    api project(':resource')
 
-    kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
-
-    api "com.google.dagger:dagger:$dagger2_compiler_version"
-    kapt  "com.google.dagger:dagger-compiler:$dagger2_compiler_version"
-
-    if (is_debug) {
-        //当isDebug true，app得依赖基础库，保证app不报错
-        api project(':resource')
-    } else {
-        api project(':module1')
-        api project(':module2')
+    if (!is_debug) {
+        getModuleNameStartsWith {
+            it.startsWith(":module")
+        }.each {
+            println("implementation  project ===> ${it}")
+            implementation project(it)
+        }
     }
+}
+
+
+def getModuleNameStartsWith(def start) {
+    def settings = new File("${rootDir}/settings.gradle")
+    def names = []
+    settings.withReader("UTF-8") { reader ->
+        reader.eachLine {
+            def array = it.split(",")
+            array.each {
+                def colon = it.indexOf(":")
+                def module_name = it.substring(colon, it.length() - 1)
+
+                if (start(module_name)) {
+                    names.push(module_name)
+                } else {
+                    println("not module -> ${module_name}")
+                }
+            }
+        }
+    }
+    return names
 }

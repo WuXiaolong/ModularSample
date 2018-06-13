@@ -1,12 +1,5 @@
-apply from: config
-
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     api project(':resource')
     api project(':common')
-
-    kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
-
-    api "com.google.dagger:dagger:$dagger2_compiler_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger2_compiler_version"
 }

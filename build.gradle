@@ -30,6 +30,18 @@ allprojects {
     }
 }
 
+subprojects { project ->
+    if (project.name.startsWith("module") || project.name.startsWith("app")) {
+        apply from: config
+
+        dependencies {
+            kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
+            kapt  "com.google.dagger:dagger-compiler:$dagger2_compiler_version"
+
+        }
+    }
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
